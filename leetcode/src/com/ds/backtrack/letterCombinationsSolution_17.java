@@ -45,7 +45,7 @@ import java.util.*;
 //leetcode submit region begin(Prohibit modification and deletion)
 public class letterCombinationsSolution_17 {
     public static void main(String[] args) {
-        List<String> letterCombinations = letterCombinations("23");
+        List<String> letterCombinations = letterCombinations("234");
         System.out.println(Arrays.toString(new List[]{letterCombinations}));
 
     }
