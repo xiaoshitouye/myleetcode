@@ -79,7 +79,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution_847 {
+class Solution_847_模拟行走机器人 {
     public static void main(String[] args) {
         int ans =robotSim(new int[]{4,-1,4,-2,4}, new int[][] {{2 , 4}});
         System.out.println(ans);
