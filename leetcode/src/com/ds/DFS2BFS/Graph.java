@@ -2,6 +2,8 @@ package DFS2BFS;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Graph {
     private ArrayList<String> vertexList;//顶点
@@ -35,17 +37,53 @@ public class Graph {
         graph.addAdge(5, 6, 1);
 //        graph.showGraph();
         System.out.println("深度遍历");
-        graph.dfs(); // A->B->C->D->E 
+//        graph.dfs(); // A->B->C->D->E [1->2->4->8->5->3->6->7]
+        System.out.println("广度遍历");
+        graph.bfs();// A->B->C->D-E [1->2->3->4->5->6->7->8]
+
+    }
+
+    private void bfs() {
+        //感觉不用遍历
+        for(int i = 0; i < vertexList.size(); i++){
+            if(!visited[i]){
+                bfs(visited, i);
+            }
+        }
+//        bfs(visited, 0);
+    }
+
+    private void bfs(boolean[] visited, int i) {
+        int u; //队列获取的头结点
+        int w; //邻接节点
+        LinkedList<Integer> queue = new LinkedList<Integer>();
+        System.out.print(vertexList.get(i)+ "-> ");
+        visited[i] = true;
+        queue.addLast(i);
+        while(!queue.isEmpty()){
+            u = queue.removeFirst();
+            w = getFisrtNeighbor(u);
+            while(w != -1){
+                if(!visited[w]){
+                    System.out.print(vertexList.get(w) + "-> ");
+                    visited[w] =true;
+                    queue.addLast(w);
+                }
+                //以u为前驱点，找w后面的邻接点
+                w = getNextNeighbor(u, w);
+            }
+        }
 
     }
 
     private void dfs() {
-        visited = new boolean[vertexList.size()];
+        //感觉不用遍历
         for(int i = 0; i < vertexList.size(); i++){
             if(!visited[i]){
-              dfs(visited,i);
+                dfs(visited, i);
             }
         }
+//        bfs(visited, 0);
     }
 
     private void dfs(boolean[] visited, int i) {
@@ -101,6 +139,6 @@ public class Graph {
     public Graph(int n){
        edges = new int[n][n];
        vertexList = new ArrayList<String>(n);
-//       visited = new boolean[n];
+       visited = new boolean[n];
     }
 }
