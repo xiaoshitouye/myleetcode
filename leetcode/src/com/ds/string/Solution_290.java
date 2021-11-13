@@ -50,14 +50,28 @@ import java.util.Map;
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution_290 {
-    public boolean wordPattern(String pattern, String s) {
-        String[] words = s.split(" ");
-        if (words.length != pattern.length())
+    public static void main(String[] args) {
+        System.out.println(wordPattern("abba" ,"dog cat cat dog"));
+    }
+    public static boolean wordPattern(String pattern, String s) {
+        String[] strs = s.split(" ");
+        if(strs.length != pattern.length()){
             return false;
-        Map index = new HashMap();
-        for (Integer i=0; i<words.length; ++i)
-            if (index.put(pattern.charAt(i), i) != index.put(words[i], i))//put方法返回值：上一次与 key 关联的值
+        }
+        Map<String, Character> str2ch = new HashMap<String, Character>();
+        Map<Character, String> ch2str = new HashMap<Character, String>();
+        for(int i = 0; i < strs.length; i++){
+            String str = strs[i];
+            char ch = pattern.charAt(i);
+            if(str2ch.containsKey(str) && str2ch.get(str) != ch){
+                return  false;
+            }
+            if(ch2str.containsKey(ch) && !ch2str.get(ch).equals(str)){//string判断用equals
                 return false;
+            }
+            str2ch.put(str, ch);
+            ch2str.put(ch, str);
+        }
         return true;
     }
 }
