@@ -2,7 +2,11 @@ package DisjointSet;
 
 public class Solution_200 {
     public static void main(String[] args) {
-        char[][] grid = new char[][]{{'1','1','1','1','0'},{'1','1','0','1','0'},{'1','1','0','0','0'},{'0','0','0','0','0'}};
+        char[][] grid = new char[][]{
+                {'1','1','1','1','0'},
+                {'1','1','0','1','0'},
+                {'1','1','0','0','0'},
+                {'0','0','0','0','0'}};
         if (grid == null || grid.length == 0) {
             return ;
         }
