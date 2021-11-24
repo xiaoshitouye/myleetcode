@@ -12,6 +12,7 @@ public class insertSort {
     private static void insertsort(int[] arr) {
         int len = arr.length;
         for(int i = 1; i < len; i++){
+            //j >= 0 && arr[j] > arr[j + 1] : 找到第一个 arr[j + 1] >=arr[j ]的元素，break当前循环
             for(int j = i - 1; j >= 0 && arr[j] > arr[j + 1]; j--){
               swap(arr, j, j + 1);
             }
